@@ -1,0 +1,212 @@
+/* Importa a fonte Poppins do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+:root {
+  --yellow: #fcbe27;
+  --white: #ffffff;
+  --degrade-btn: linear-gradient(90deg, var(--yellow) 0%, #e0a819 100%);
+}
+
+/* Classes que TALVEZ sejam alteradas */
+
+.container {
+  background: var(--white);
+  max-width: 1600px;
+  padding: 0 3%;
+  margin: 0 auto;
+}
+
+.btn-gradiente {
+  padding: 10px 25px;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  background: var(--degrade-btn);
+  border-radius: 6px;
+  font-weight: 500;
+  transition: background 0.3s ease;
+  font-size: 15px;
+}
+
+/* Classe do SITE */
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.logo {
+  font-size: 30px;
+  font-weight: bold;
+  color: black;
+}
+
+.nav-list {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  transition: left 0.3s ease;
+}
+
+.nav-list a {
+  color: black;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-list a:hover {
+  color: var(--yellow);
+}
+
+/* Main */
+
+.main-texto {
+  margin-top: 100px;
+  margin-left: 60px;
+}
+
+.main-img {
+  margin-top: 100px;
+  margin-left: 40px;
+  transform: translateX(-200px);
+}
+
+.main-img img {
+  width: 280px;
+}
+
+main .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.manual-link {
+  display: inline-block;
+  font-size: 13px;
+  color: gray;
+  margin-top: 5px;
+  transition: color 0.3s ease;
+}
+
+.manual-link:hover {
+  color: var(--yellow);
+  text-decoration: underline;
+}
+
+/* Botão-menu */
+
+.menu-icon {
+  display: none;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+}
+
+.menu-icon img {
+  width: 100%;
+  height: auto;
+}
+
+/*About*/
+
+.about .container {
+  display: flex;
+  align-items: center;
+  gap: 6px; /* espaçamento entre imagem e texto */
+  padding: 40px 0;
+}
+
+.about .about-img {
+  width: 33%;
+  padding-right: 30px;
+  margin-left: 35px; /* empurra a imagem mais à direita */
+}
+
+.about .about-img img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.about .about-txt {
+  width: 65%;
+}
+
+.about .about-texto {
+  text-align: unset;
+  font-size: 16px;
+  line-height: 1.6;
+}
+/*Impactos*/
+
+.impactos-titulo {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+.impactos-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 22px;
+}
+
+.card {
+  flex: 1 1 calc(25% - 20px);
+  background-color: #ffefd4 ;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  min-width: 240px;
+  max-width: 100%;
+}
+
+@media (max-width: 960px) {
+  .card {
+    flex: 1 1 100%;
+  }
+}
+
+/* Responsividade */
+
+@media (max-width: 960px) {
+  .menu-icon {
+    display: block;
+  }
+
+  .nav-list {
+    position: fixed;
+    background-color: #ffffff;
+    top: 0;
+    left: 100%;
+    width: 100%;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    z-index: 1000;
+    transition: left 0.3s ease;
+  }
+
+  .nav-list.ativo {
+    left: 0;
+  }
+
+}
