@@ -1,17 +1,14 @@
-var menuIcon = document.querySelector('.menu-icon');
-var navList = document.querySelector('.nav-list');
+
+const menuIcon = document.querySelector('.menu-icon');
+const navList = document.querySelector('.nav-list');
 
 menuIcon.addEventListener('click', () => {
+    navList.classList.toggle('ativo');
+});
 
-    if (navList.classList.contains('ativo')) {
-        navList.classList.remove('ativo');
-        document.querySelector ('.menu-icon img'),src = img/menuIcon
-        }else{
-            navList.classList.add ('ativo');
+//  modo claro/escuro
+const themeToggle = document.getElementById('theme-toggle');
 
-        
-    }
-
-}
-
-)
+themeToggle?.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+});
