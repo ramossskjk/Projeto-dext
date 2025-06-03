@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Monitoramento de Colmeias</title>
+  <!-- Link para o CSS -->
+  <link rel="stylesheet" href="../css/meu-produto.css">
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+</head>
+<body>
+
+  <h1>🐝 Monitoramento de Colmeias</h1>
+
+  <!-- Formulário para adicionar colmeia -->
+  <div class="add-form">
+    <input type="number" id="colmeiaId" placeholder="ID da Nova Colmeia" min="1" required>
+    <button onclick="adicionarColmeia()">Adicionar Colmeia</button>
+  </div>
+
+  <div class="dashboard" id="dashboard">
+    <!-- Cards serão gerados aqui -->
+  </div>
+
+  <div class="details" id="details">
+    <p class="no-data">Selecione uma colmeia para ver os detalhes.</p>
+  </div>
+
+  <!-- Script JS -->
+  <script src="../js/meu-produto.js"></script>
+
+</body>
+</html>
