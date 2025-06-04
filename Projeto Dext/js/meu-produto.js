@@ -7,7 +7,7 @@ let colmeias = [
   { id: 5 }
 ];
 
-// Selecionar elementos do DOM
+
 const dashboard = document.getElementById("dashboard");
 const details = document.getElementById("details");
 
@@ -128,7 +128,7 @@ function adicionarColmeia() {
 
   colmeias.push({ id: novoId });
   input.value = "";
-  criarCardsColmeias(); // Recria os cards com a nova colmeia
+  criarCardsColmeias(); 
 }
 
 // Inicialização
