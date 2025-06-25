@@ -10,6 +10,8 @@ let colmeias = [
 
 const dashboard = document.getElementById("dashboard");
 const details = document.getElementById("details");
+const sidebar = document.getElementById("sidebar");
+const sidebarToggle = document.getElementById("sidebar-toggle");
 
 // Função para criar cards das colmeias
 function criarCardsColmeias() {
@@ -28,21 +30,21 @@ function criarCardsColmeias() {
   });
 }
 
-// Função para exibir detalhes vazios da colmeia
+// Função para exibir detalhes vazios da colmeia e preencher a sidebar
 function mostrarDetalhesVazios(colmeia) {
   details.innerHTML = `
     <h2>Detalhes da Colmeia ${colmeia.id}</h2>
-    <canvas id="humidityChart"></canvas>
-    <canvas id="tempChart"></canvas>
-    <canvas id="co2Chart"></canvas>
+    <canvas id="humidityChart-${colmeia.id}"></canvas>
+    <canvas id="tempChart-${colmeia.id}"></canvas>
+    <canvas id="co2Chart-${colmeia.id}"></canvas>
     <p class="no-data">Nenhum dado disponível no momento.</p>
   `;
 
-  const dadosVazios = [null, null, null, null, null];
   const labels = ['00h', '06h', '12h', '18h', '24h'];
+  const dadosVazios = [null, null, null, null, null];
 
   // Gráfico de Umidade
-  new Chart(document.getElementById("humidityChart"), {
+  new Chart(document.getElementById(`humidityChart-${colmeia.id}`), {
     type: 'line',
     data: {
       labels: labels,
@@ -58,7 +60,7 @@ function mostrarDetalhesVazios(colmeia) {
   });
 
   // Gráfico de Temperatura
-  new Chart(document.getElementById("tempChart"), {
+  new Chart(document.getElementById(`tempChart-${colmeia.id}`), {
     type: 'line',
     data: {
       labels: labels,
@@ -74,7 +76,7 @@ function mostrarDetalhesVazios(colmeia) {
   });
 
   // Gráfico de CO₂
-  new Chart(document.getElementById("co2Chart"), {
+  new Chart(document.getElementById(`co2Chart-${colmeia.id}`), {
     type: 'line',
     data: {
       labels: labels,
@@ -88,6 +90,13 @@ function mostrarDetalhesVazios(colmeia) {
     },
     options: opcoesPadraoGrafico()
   });
+
+  // Preenche a sidebar com informações da colmeia
+  document.getElementById("info-id").textContent = colmeia.id;
+  document.getElementById("info-umidade").textContent = "--%";
+  document.getElementById("info-temperatura").textContent = "--°C";
+  document.getElementById("info-co2").textContent = "-- ppm";
+  document.getElementById("info-estado").textContent = "Sem dados";
 }
 
 // Opções padrão para os gráficos
@@ -130,6 +139,23 @@ function adicionarColmeia() {
   input.value = "";
   criarCardsColmeias(); 
 }
+
+// Função para alternar entre expandido e recolhido
+function toggleSidebar() {
+  sidebar.classList.toggle("active");
+  sidebarToggle.classList.toggle("active");
+}
+
+// Adicionar evento de clique ao botão
+if (sidebarToggle) {
+  sidebarToggle.addEventListener("click", toggleSidebar);
+}
+
+//  Logout
+document.getElementById("logout-button").addEventListener("click", function(event) {
+  event.preventDefault();
+  window.location.href = "../html/home.html";
+});
 
 // Inicialização
 criarCardsColmeias();
