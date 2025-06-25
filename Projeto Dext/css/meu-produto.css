@@ -22,14 +22,16 @@ h1 {
   gap: 20px;
   justify-content: center;
   margin-top: 30px;
+  padding: 0 10px; /* Evita que cards fiquem colados nas bordas */
 }
 
 .beehive-card {
   background-color: #ffffff;
   border: 2px solid #dcdcdc;
   border-radius: 10px;
-  padding: 20px;
-  width: 200px;
+  padding: 15px;
+  width: 90%; /* Para mobile */
+  max-width: 200px; /* Limite para desktop */
   text-align: center;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -45,10 +47,10 @@ h1 {
   text-align: center;
 }
 
-canvas {
-  max-width: 100%;
-  height: 200px;
-  margin: 20px auto;
+.chart-canvas {
+  max-width: 300px; /* Limita a largura máxima dos gráficos */
+  height: 150px; /* Altura fixa */
+  margin: 10px auto;
 }
 
 .no-data {
@@ -80,4 +82,118 @@ canvas {
 
 .add-form button:hover {
   background-color: #037c83;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 20px;
+  right: -270px; /* Oculta fora da tela */
+  width: 250px;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: right 0.3s ease;
+  z-index: 1000;
+}
+
+.sidebar.active {
+  right: 20px;
+}
+
+/* Posicionamento do conteúdo principal */
+.dashboard,
+.details {
+  margin-right: 20px;
+  transition: margin-right 0.3s ease;
+}
+
+.sidebar.active ~ .dashboard,
+.sidebar.active ~ .details {
+  margin-right: 290px;
+}
+
+/* Botão toggle da sidebar */
+.sidebar-toggle {
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  background-color: #e0a819;
+  border: none;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 1001;
+}
+
+.sidebar-toggle img {
+  width: 30px;
+  height: 30px;
+  filter: invert(1); /* Inverte a cor da imagem para contraste */
+}
+
+.sidebar-toggle.active {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+/* Estilo para a opção de logout */
+.logout-button {
+  display: block;
+  text-align: center;
+  padding: 10px;
+  color: #e0a819;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.logout-button:hover {
+  color: #037c83;
+}
+
+/* Limita o tamanho dos gráficos na seção de detalhes */
+.details canvas {
+  max-width: 400px;
+  height: 200px; /* Altura fixa */
+  margin: 10px auto;
+}
+
+/* Media Queries para Mobile */
+@media (max-width: 767px) {
+  body {
+    margin: 10px;
+  }
+
+  h1 {
+    font-size: 1.3rem;
+  }
+
+  .add-form {
+    margin-bottom: 20px;
+  }
+
+  .details {
+    margin-top: 20px;
+  }
+
+  .dashboard {
+    margin-top: 20px;
+  }
+
+  .info-box p {
+    font-size: 13px;
+  }
+
+  .chart-canvas {
+    max-width: 200px; /* Menor largura para mobile */
+    height: 120px; /* Menor altura para mobile */
+  }
+
+  .details canvas {
+    max-width: 200px; /* Menor largura para mobile */
+    height: 120px; /* Menor altura para mobile */
+  }
 }
