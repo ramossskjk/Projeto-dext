@@ -4,14 +4,33 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Monitoramento de Colmeias</title>
-  <!-- Link para o CSS -->
   <link rel="stylesheet" href="../css/meu-produto.css">
-  <!-- Chart.js -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>    
 </head>
 <body>
 
   <h1>🐝 Monitoramento de Colmeias</h1>
+
+  <!-- Botão para expandir/recolher a sidebar -->
+  <button id="sidebar-toggle" class="sidebar-toggle">
+    <img src="../img/botão-responsivo.png" alt="Expandir Sidebar" width="30" height="30">
+  </button>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <h2>📊 Informações Detalhadas:</h2>
+    <div class="info-box">
+      <p><strong>ID:</strong> <span id="info-id">--</span></p>
+      <p><strong>Umidade:</strong> <span id="info-umidade">--%</span></p>
+      <p><strong>Temperatura:</strong> <span id="info-temperatura">--°C</span></p>
+      <p><strong>CO₂:</strong> <span id="info-co2">-- ppm</span></p>
+      <p><strong>Estado:</strong> <span id="info-estado">--</span></p>
+    </div>
+
+    <!-- Opção de Logout -->
+    <hr>
+    <a href="home.html" id="logout-button" class="logout-button">Logout</a>
+  </aside>
 
   <!-- Formulário para adicionar colmeia -->
   <div class="add-form">
@@ -27,7 +46,6 @@
     <p class="no-data">Selecione uma colmeia para ver os detalhes.</p>
   </div>
 
-  <!-- Script JS -->
   <script src="../js/meu-produto.js"></script>
 
 </body>
